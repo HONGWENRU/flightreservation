@@ -1,1 +1,42 @@
-eval(function(p,a,c,k,e,r){e=function(c){return(c<62?'':e(parseInt(c/62)))+((c=c%62)>35?String.fromCharCode(c+29):c.toString(36))};if('0'.replace(0,e)==0){while(c--)r[e(c)]=k[c];k=[function(e){return r[e]||e}];e=function(){return'[235-9b-df-zA-U]'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('h o(b,l,m){3($(\'meta[name=B-support]\').attr("content")===\'no-B\'){3(b===\'\')p\'\';p C}3(l===v){7 l=$(b).c(\'line-5\')}3(m===v){7 m=\'#ffffff\'}7 q=D(4);$(\'#o-\'+q+\' .i\').c(\'m\',m,\'n\');7 w=\'<8 id="o-\'+q+\'" j="o" style="k: \'+l+\' !n; 5: \'+l+\' !n;"><8 j="i"></8><8 j="i"></8><8 j="i"></8><8 j="i"></8><8 j="i"></8></8>\';3(b!==\'\'){7 k=$(b).c(\'k\');7 5=$(b).c(\'5\');$(b).c(\'k\',k,\'n\');$(b).c(\'5\',5,\'n\');$(b).f(w)}p w}h D(E,r){7 x=0;7 y="";7 9;3(r===v){7 r=C}while(x<E){9=(F.floor((F.q()*100))%94)+G;3(!r){3((9>=G)&&(9<=47)){s}3((9>=58)&&(9<=64)){s}3((9>=91)&&(9<=96)){s}3((9>=123)&&(9<=126)){s}}x++;y+=String.fromCharCode(9)}p y}h form_auth_center(){3($(t).5()>($(\'.z-A\').5()+$(\'.navbar\').5()+$(\'#H\').5())){7 I=($(t).5()-$(\'.z-A\').5()-$(\'#H\').5())/4;$(\'.z-A\').c({\'margin-J\':I})}}h nav_menu_top(){3($(t).k()<992){3($(\'.2-d\').f()!==\'\'){$(\'.2-g\').f($(\'.2-d\').f());$(\'.2-g .6-2\').K(\'6-d\');$(\'.2-g .6-2\').L(\'6-g\');$(\'.2-d\').M()}}else{3($(\'.2-d\').f()===\'\'){$(\'.2-d\').f($(\'.2-g\').f());$(\'.2-d .6-2\').K(\'6-g\');$(\'.2-d .6-2\').L(\'6-d\');$(\'.2-g\').M()}$(\'.6-2\').c({\'J\':$(\'.N-O\').5()+parseInt($(\'.N-O\').c(\'padding-bottom\').replace(\'px\',\'\'))-$(\'.6-2\').5()})}}h nav_menu_switch(){7 u=document.P.toString();3(u.match(\'#\')){$(\'.6-2 a[Q=#\'+u.R(\'#\')[1]+\']\').S(\'T\');$(\'.6-2 a[Q=#\'+u.R(\'#\')[1]+\']\').S(\'T\')}$(\'.6-2 a\').on(\'shown\',h(e){t.P.U=e.target.U})}',[],57,'||menu|if||height|nav|var|div|randomNumber||item|css|tabs||html|pills|function|circle|class|width|size|background|important|loader|return|random|special|continue|window|url|undefined|string|iteration|password|form|auth|css3|false|random_string|length|Math|33|footer|head|top|removeClass|addClass|empty|page|header|location|href|split|tab|show|hash'.split('|'),0,{}))
+// define global variables
+var endpoint = 'http://172.31.131.185/539/'
+
+// functions Add/Delete/Edit User Information
+function modify_replace_add(){
+  var html_add = '<div id="div_modify_replace"><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer ID</label><input type="text" value="" id="modify_add_cid" class="form-control" placeholder="Add customer id"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Email</label><input type="text" value="" id="modify_add_email" class="form-control" placeholder="Add customer email"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Create Date</label><input type="text" value="" id="modify_add_create_date" class="form-control" placeholder="Add customer create date"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Phone</label><input type="text" value="" id="modify_add_phone" class="form-control" placeholder="Add customer phone"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Password</label><input type="text" value="" id="modify_add_passwords" class="form-control" placeholder="Add customer password"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer First Name</label><input type="text" value="" id="modify_add_first_name" class="form-control" placeholder="Add customer first name"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer last name</label><input type="text" value="" id="modify_add_last_name" class="form-control" placeholder="Add customer last name"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer nick name</label><input type="text" value="" id="modify_add_nick_name" class="form-control" placeholder="Add customer nick name"></div><div><span class="input-group-btn"><button type="button" id="modify_add_go" class="btn btn-primary" onclick="modify_add();"><i class="fa fa-sign-in-alt fa-fw"></i></button></span></div></div></div>';
+  $("#div_modify_replace").replaceWith(html_add);
+}
+
+function modify_replace_delete(){
+  var html_delete = '<div id="div_modify_replace" class="input-group" style="margin-bottom: 10.5px;"><label>Customer ID</label><input type="text" value="" id="modify_delete_cid" class="form-control" placeholder="Delete customer id"><div><span class="input-group-btn"><button type="button" id="modify_delete_go" class="btn btn-primary" onclick="modify_delete();"><i class="fa fa-sign-in-alt fa-fw"></i></button></span></div></div>';
+  $("#div_modify_replace").replaceWith(html_delete);
+}
+
+function modify_replace_edit(){
+  var html_edit = '<div id="div_modify_replace"><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer ID</label><input type="text" value="" id="modify_edit_cid" class="form-control" placeholder="Edit customer id"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Email</label><input type="text" value="" id="modify_edit_email" class="form-control" placeholder="Edit customer email"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Create Date</label><input type="text" value="" id="modify_edit_create_date" class="form-control" placeholder="Edit customer create date"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Phone</label><input type="text" value="" id="modify_edit_phone" class="form-control" placeholder="Edit customer phone"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer Password</label><input type="text" value="" id="modify_edit_passwords" class="form-control" placeholder="Edit customer password"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer First Name</label><input type="text" value="" id="modify_edit_first_name" class="form-control" placeholder="Edit customer first name"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer last name</label><input type="text" value="" id="modify_edit_last_name" class="form-control" placeholder="Edit customer last name"></div><div class="input-group" style="margin-bottom: 10.5px;"><label>Customer nick name</label><input type="text" value="" id="modify_edit_nick_name" class="form-control" placeholder="Edit customer nick name"></div><div><span class="input-group-btn"><button type="button" id="modify_edit_go" class="btn btn-primary" onclick="modify_edit();"><i class="fa fa-sign-in-alt fa-fw"></i></button></span></div></div></div>';
+  $("#div_modify_replace").replaceWith(html_edit);
+}
+
+
+// 
+
+function reservations(){
+  var ajax=Ajax();
+  var url = endpoint + "query_reservations.php";
+  var con = '123';
+  var fid = $("#reservations_input").val();
+  var input="uid="+'1'+"&comment="+con+"&fid="+fid;
+  ajax.post(url,input,function(data){
+    // console.log(data)
+    if(true){
+      alert('success');
+      alert(data)
+    }else{
+      alert('fail');
+    }
+  });
+}
+
+
+
+
