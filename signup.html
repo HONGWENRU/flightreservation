@@ -8,16 +8,20 @@
     <link href="css/signup.css" rel="stylesheet">
 	
 	<!-- JQuery -->
-	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	
 	<!-- Custom JQuery Code -->
+    <script src="js/ajax.js"></script>
+    <script
+            src="https://code.jquery.com/jquery-3.0.0.js"
+            integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo="
+            crossorigin="anonymous"></script>
 	<script src="js/utility.js"></script>
 	<script src="js/signup.js"></script>
 	<script src="js/signin.js"></script>
-	<script src="js/signout.js"></script>
+	<script type="text/javascript" src="js/signout.js"></script>
 	<script src="js/changepassword.js"></script>
-	<script src="js/jquery-cookie-master/src/jquery.cookie.js"></script>
+
 	
 	
 </head>
@@ -99,7 +103,7 @@
 							</div>
                              <div class="form-group col-lg-12">
 								<label>Phone Number</label>
-								<input type="" name="Phone Number" class="form-control" id="Last Name" value="" placeholder="xxx-xxx-xxxx">
+								<input type="" name="Phone Number" class="form-control" id="Phone Number" value="" placeholder="xxx-xxx-xxxx">
 							</div>
                          
                       
@@ -396,7 +400,7 @@
                 </div>
                         
                            <div class="col-md-3">
-          <button type="button" class="btn btn-success">Comfirm</button>
+          <button id="confirmbutton" type="button" class="btn btn-success">Comfirm</button>
         </div>
                         
                         

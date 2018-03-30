@@ -20,15 +20,19 @@
 	<link href="css/theme.css" rel="stylesheet">
 	
 	<!-- Moved to the top to hide strange Jquery shenanigans -->
-	<script src="js/jquery.min.js"></script>
+    <script src="js/ajax.js"></script>
+	<script
+			src="https://code.jquery.com/jquery-3.0.0.js"
+			integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo="
+			crossorigin="anonymous"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="js/utility.js"></script>
 	<script src="js/signin.js"></script>
 	<script src="js/signout.js"></script>
 	<script src="js/signup.js"></script>
 	<script src="js/changepassword.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/index.js"></script>
+    <script src="js/cart.js"></script>
 	<script src="js/jquery-cookie-master/src/jquery.cookie.js"></script>
 
 </head>
@@ -101,19 +105,68 @@
 						
 					</div>
 					<div class="form-group col-lg-6">
+                        <span>Depart Date</span>
 						<input type="date" class="form-control" placeholder="Date(yyyy-mm-dd)" id="date">
 					</div>
 					<div class="form-group col-lg-6">
-						<input type="date" class="form-control" placeholder="Return Date(yyyy-mm-dd)" id="returndate">
+                        <span>Return Date</span>
+                        <input type="date" class="form-control" placeholder="Return Date(yyyy-mm-dd)" id="returndate">
 					</div>
+
+					<div class="form-group col-lg-6">
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="non-stop" value="non_stop" checked>
+							<label class="form-check-label" for="non-stop">
+								non-stop
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="exampleRadios" id="stop" value="stop">
+							<label class="form-check-label" for="stop">
+								stop
+							</label>
+						</div>
+
+
+					</div>
+
+					<div class="form-group col-lg-6">
+
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="exampleRadios2" id="one-way" value="one_way" checked>
+							<label class="form-check-label" for="one-way">
+								one-way
+							</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="exampleRadios2" id="round-trip" value="round_trip">
+							<label class="form-check-label" for="round-trip">
+								round-trip
+							</label>
+						</div>
+
+
+					</div>
+
 					<div class="form-group col-lg-6">
 						<button type="submit" class="col-xs-12 btn btn-primary btn-load" id="search">Search</button>
 					</div>
-					<div class="form-group col-lg-6">
-						<button type="submit" class="col-xs-12 btn btn-primary btn-load" id="advancedsearch">Advanced Search</button>
-					</div>
 				</div>
-				</div>
+
+                   <div class="col-md-4" id='flightcontainer'>
+                       <div class="btn-group mr-4" data-toggle="buttons" id="flightlist">
+
+
+
+                       </div>
+                       <a  href="payment.html" type="submit" class="col-xs-12 btn btn-primary btn-load" id="next">Next</a>
+
+                   </div>
+
+
+
+                </div>
 			
 			</div>
         </div>
