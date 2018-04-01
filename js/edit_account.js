@@ -98,10 +98,16 @@ function submit(){
             alert('edit customer information successfully.')
         },
         error: function(request, status, error){
-          alert('fail to edit customer');
-          console.log(request.responseText);
-          console.log(error);
-          console.log(status);
+          if (request.responseText == 'suceess'){
+            alert('edit customer information successfully')
+          }
+          else{
+            alert('fail to edit customer');
+            console.log(request.responseText);
+            console.log(error);
+            console.log(status);  
+          }
+          
         },
       });
 }

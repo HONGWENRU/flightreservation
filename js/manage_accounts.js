@@ -20,7 +20,7 @@ $(document).ready(function(){
                               '<td id="email">' + item.email + '</td>' +
                               '<td id="create_date">' + item.create_date + '</td>' +
                               '<td id="phone">' + item.phone + '</td>' +
-                              '<td id="passwords">' + item.passwords + '</td>' +
+                              '<td id="passwords" class="hidetext">' + item.passwords + '</td>' +
                               '<td id="first_name">' + item.first_name + '</td>' +
                               '<td id="last_name">' + item.last_name + '</td>' +
                               '<td id="nickname">' + item.nickname + '</td>' +

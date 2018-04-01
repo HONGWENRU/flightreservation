@@ -34,3 +34,5 @@ tbody{
 input{
   /*width: 100%;*/
 }
+
+.hidetext { -webkit-text-security: circle; }
