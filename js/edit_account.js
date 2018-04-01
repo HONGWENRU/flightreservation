@@ -94,8 +94,8 @@ function submit(){
         data: input,
         dataType: 'json',
         success: function(data){
-            // console.log(data);
-            alert('edit customer information successfully.')
+            console.log(data);
+            alert('edit customer information in succ.')
         },
         error: function(request, status, error){
           if (request.responseText == 'suceess'){
