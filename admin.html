@@ -19,8 +19,8 @@
 
 	<!-- Custom JQuery Code -->
 	<script src="js/ajax.js"></script>
-  <script src="js/admin.js"></script>
   <script src="js/test.js"></script>
+  <script src="js/admin.js"></script>
   <title>CS 539 Project</title>
 	<!-- test code -->
   
@@ -44,7 +44,6 @@
         <ul class="nav navbar-nav">
           <li class="active" id="dashboardButton"><a href="dashboard.html">Dashboard</a></li>
           <li class="active" id="registerButton"><a href="signup.html">Register</a></li>
-          <li class="active" id="adminButton"><a href="adminDash.html">Admin Dashboard</a></li>
           <li class="active" id="cart"><a href="checkout.html">Cart</a></li>
           <li class="active" id="admin"><a href="admin.html">Admin</a></li>
         </ul>
@@ -116,25 +115,25 @@
       <ul class="nav nav-sidebar">
         <li>
           <a href="eternal links 1.html">
-            <i class="fa fa-user fa-fw"></i> eternal links 1 if necessary
+            <i class="fa fa-user fa-fw"></i> external links 1 if necessary
           </a>
         </li>
         <li>
           <a href="eternal links 2.html">
-            <i class="fa fa-comments fa-fw"></i> eternal links 2 if necessary
+            <i class="fa fa-comments fa-fw"></i> external links 2 if necessary
           </a>
         </li>
         <li>
           <a href="eternal links 3.html">
-            <i class="fa fa-file fa-fw"></i> eternal links 3 if necessary
+            <i class="fa fa-file fa-fw"></i> external links 3 if necessary
           </a>
         </li>
       </ul>
 
       <ul class="nav nav-sidebar">
         <li>
-          <a href="myaccount.html">
-            <i class="fa fa-user fa-fw"></i> Manage Account
+          <a href="manage_accounts.html">
+            <i class="fa fa-user fa-fw"></i> Manage User Accounts
           </a>
         </li>
       </ul> 
@@ -147,96 +146,113 @@
       <div id="content" class="container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main container-menu">
 
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-6">
 
-            <div id="ui-modify" class="panel panel-default">
+            <div id="ui-sales-report" class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">  <i class="fa fa-bolt fa-fw"></i> 
-                  <span class="dropdown"> 
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: inherit;">
-                      <span id="modify_status">Modify User Inforamtion</span> <b class="caret"></b>
-                    </a>  
-                    <ul class="dropdown-menu">  
-                      <li><a style="cursor: pointer;" onclick="$('#modify_status').html('Add');modify_replace_add();">Add</a></li> 
-                      <li><a style="cursor: pointer;" onclick="$('#modify_status').html('Edit');modify_replace_edit();">Edit</a></li> 
-                      <li><a style="cursor: pointer;" onclick="$('#modify_status').html('Delete');modify_replace_delete();">Delete</a></li> 
-                    </ul> 
-                  </span> 
-                </h3>
-              </div>
-              <div class="panel-body">
-                <div id="div_modify_replace"></div>
-                <small>Input an email address to edit customer's information.</small>
-              </div>
-            </div>
-
-
-            <div id="ui-reservations" class="panel panel-default">
-              <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> Query Reservations</h3>
+                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> Query Sales Report</h3>
               </div>
               <div class="panel-body">
                 <div class="input-group" style="margin-bottom: 10.5px;">
-                  <span id="spdy_icon" class="input-group-addon">
-                    <i class="fa fa-user fa-fw"></i>
+                  <span id="sales_report_icon" class="input-group-addon">
+                    <i class="fa fa-calendar-alt fa-fw"></i>
                   </span>
-                  <input type="text" name="keyword" value="" id="reservations_input" class="form-control" placeholder="Access Reservations Info">
+                  <input type="text" name="keyword" value="" id="sales_report_input" class="form-control" placeholder="2017-09">
                   <span class="input-group-btn">
-                    <button type="button" id="reservations_go" class="btn btn-primary" onclick="reservations();">
+                    <button type="button" id="sales_report_go" class="btn btn-primary" onclick="sales_report();">
                       <i class="fa fa-sign-in-alt fa-fw">
                       </i>
                     </button>
                   </span>
                 </div>
-                <small>Produce a list of reservations by flight number or by customer email address.</small>
+                <div id="div_sales_report_result"></div>
+                <small>Produce a sales report for a particular month.</small>
               </div>
             </div>
+
+            <div id="ui-reservations" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">  <i class="fa fa-bolt fa-fw"></i> 
+                  <span class="dropdown"> 
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: inherit;">
+                      <span id="modify_status">Query Reservations</span> <b class="caret"></b>
+                    </a>  
+                    <ul class="dropdown-menu">
+                      <li><a style="cursor: pointer;" onclick="$('#reservations_status').html('By Flight Number');reservations_replace_flight();">By Flight Number</a></li> 
+                      <li><a style="cursor: pointer;" onclick="$('#reservations_status').html('By Customer Name');reservations_replace_customer();">By Customer Name</a></li>
+                    </ul>
+                  </span> 
+                </h3>
+              </div>
+              <div class="panel-body">
+                <div id="div_reservations_replace"></div>
+                <div id="div_reservations_result"></div>
+                  <small>Produce a list of reservations by flight number or by customer email address.</small>
+                </div>
+            </div>
+            
 
             <div id="ui-revenue" class="panel panel-default">
             	<div class="panel-heading">
             		<h3 class="panel-title">
             			<i class="fa fa-tasks fa-fw"></i> Query Revenue</h3>
-            		</div>
-            		<div class="panel-body">
-            			<div class="container-page">		
-            				<div class="col-md-12" style="padding: 0px">
-
-            					<div class="form-group col-md-4">
-            						<label>Flight No.</label>
-            						<input type="" name="Flight No." class="form-control" id="Flight No." value="" placeholder="MH370">
-            					</div>
-
-            					<div class="form-group col-md-4">
-            						<label>Destination City</label>
-            						<input type="" name="Destination City" class="form-control" id="Destination City" value="" placeholder="LAX">
-            					</div>	
-
-            					<div class="form-group col-md-4">
-            						<label>Customer Email Address</label>
-            						<input type="password" name="Customer Email Address" class="form-control" id="Customer Email Address" value="" placeholder="example@gmail.com">
-            					</div>
-            				</div>
-            			</div>
-            		</div>
-            	</div>
+          		</div>
+          		<div class="panel-body">
+          			<div class="container-page">		
+          				<div class="input-group">
+                    <span id="revenue_icon" class="input-group-addon">
+                      <i class="fa fa-user fa-fw"></i>
+                    </span>
+                    <input type="text" name="keyword" value="" id="revenue_input" class="form-control" placeholder="Access Revenue Info">
+                    <span class="input-group-btn">
+                      <button type="button" id="revenue_go" class="btn btn-primary" onclick="revenue();">
+                        <i class="fa fa-sign-in-alt fa-fw">
+                        </i>
+                      </button>
+                    </span>
+                  </div>
+                  <div class="input-group" style="width: 100%">
+                    <!-- <div class="col-md-12" style="padding: 0px"> -->
+                      <div class="col-md-4">
+                        <input type="radio" id="query_revenue_radio_by_cid"
+                        name="query_revenue_radio" value="cid">
+                        <label for="query_revenue_radio_by_cid" style="display: inline;">By Customer ID</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="radio" id="query_revenue_radio_by_flight"
+                          name="query_revenue_radio" value="flight">
+                        <label for="query_revenue_radio_by_flight" style="display: inline;">By Flight Number</label>
+                      </div>
+                      <div class="col-md-4">
+                        <input type="radio" id="query_revenue_radio_by_city"
+                        name="query_revenue_radio" value="city">
+                        <label for="query_revenue_radio_by_city" style="display: inline;">By Destination City</label>                     
+                      </div>
+                    <!-- </div>     -->
+                  </div>
+                  <div id="div_revenue_result"></div>
+          			</div>
+          		</div>
+          	</div>
 
             <div id="ui-seats" class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i> Query Seats</h3>
+                <h3 class="panel-title"><i class="fa fa-tasks fa-fw"></i>Query Seats</h3>
               </div>
               <div class="panel-body">
                 <div class="input-group" style="margin-bottom: 10.5px;">
-                  <span id="spdy_icon" class="input-group-addon">
+                  <span id="seats_icon" class="input-group-addon">
                     <i class="fa fa-plane fa-fw"></i>
                   </span>
-                  <input type="text" name="keyword" value="" id="spdy_input" class="form-control" placeholder="MH370" onclick="$('#seats_go').removeClass('disabled');">
+                  <input type="text" name="keyword" value="" id="seats_input" class="form-control" placeholder="MH370">
                   <span class="input-group-btn">
-                    <button type="button" id="seats_go" class="btn btn-primary" onclick="loader(this); seats();">
+                    <button type="button" id="seats_go" class="btn btn-primary" onclick="seats();">
                       <i class="fa fa-sign-in-alt fa-fw">
                       </i>
                     </button>
                   </span>
                 </div>
+                <div id="div_seats_result"></div>
                 <small>Produce a list of all customers who have seats reserved on a given flight.</small>
               </div>
             </div>
@@ -247,89 +263,36 @@
               </div>
               <div class="panel-body">
                 <div class="input-group" style="margin-bottom: 10.5px;">
-                  <span id="spdy_icon" class="input-group-addon">
+                  <span id="seats_icon" class="input-group-addon">
                     <i class="fa fa-map-marker fa-fw"></i>
                   </span>
-                  <input type="text" name="keyword" value="" id="spdy_input" class="form-control" placeholder="LAX" onclick="$('#flights_in_airport_go').removeClass('disabled');">
+                  <input type="text" name="keyword" value="" id="flights_in_airport_input" class="form-control" placeholder="LAX">
                   <span class="input-group-btn">
-                    <button type="button" id="flights_in_airport_go" class="btn btn-primary" onclick="loader(this); flights_in_airport();">
+                    <button type="button" id="flights_in_airport_go" class="btn btn-primary" onclick="flights_in_airport();">
                       <i class="fa fa-sign-in-alt fa-fw">
                       </i>
                     </button>
                   </span>
                 </div>
+                <div id="div_flights_in_airport_result"></div>
                 <small>Produce a list of all flights for a given airport.</small>
               </div>
             </div>
+
+            
+
+
           </div>
 
 
-          <div class="col-md-8">
+          <div class="col-md-6">
 
             <div id="ui-flights" class="panel panel-default">
               <div class="panel-heading">
                 <h3 class="panel-title">
                   <i class="fa fa-tasks fa-fw"></i> All Flights</h3>
               </div>
-              <div class="list-group">
-                <table>
-                  <tr>
-                    <th>Flight</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Max Seats</th>
-                    <th>Working Days</th>
-                  </tr>
-                  <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                </table>   
+              <div class="list-group" id="div_replace_all_flights">
               </div>
             </div>
 
@@ -338,65 +301,7 @@
                 <h3 class="panel-title">
                   <i class="fa fa-tasks fa-fw"></i> Most Active Flights</h3>
               </div>
-              <div class="list-group">
-                <table>
-                  <tr>
-                    <th>Flight</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Max Seats</th>
-                    <th>Working Days</th>
-                  </tr>
-                  <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                </table>   
+              <div class="list-group" id="div_replace_most_active_flights">
               </div>
             </div>
             
@@ -408,80 +313,29 @@
                       <span id="stat_name">Status</span> <b class="caret"></b>
                     </a>  
                     <ul class="dropdown-menu">  
-                      <li><a style="cursor: pointer;" onclick="$('#stat_name').html('On-time'); draw_time('flights_on_time');">On-time</a></li> 
-                      <li><a style="cursor: pointer;" onclick="$('#stat_name').html('Delayed'); draw_time('flights_delayed');">Delayed</a></li> 
+                      <li><a style="cursor: pointer;" onclick="$('#stat_name').html('On-time'); draw_time('on-time');">On-time</a></li> 
+                      <li><a style="cursor: pointer;" onclick="$('#stat_name').html('Delayed'); draw_time('delayed');">Delayed</a></li> 
                     </ul> 
                   </span> 
                 </h3>
               </div>
-              <div class="list-group">
-                <table>
-                  <tr>
-                    <th>Flight</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Max Seats</th>
-                    <th>Working Days</th>
-                  </tr>
-                  <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                    <td>Maria Anders</td>
-                    <td>Germany</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                  <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                  </tr>
-                </table>   
-              </div>
+              <div class="list-group" id="div_replace_time"></div>
             </div>
 
+            <div id="ui-customer-revenue" class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  <i class="fa fa-tasks fa-fw"></i>Customers with most revenue</h3>
+              </div>
+              <div class="list-group" id="div_replace_customer_revenue">  
+              </div>
+            </div>
             
 
 
             </div>
             </div>
-
+            </div>
           </div>
         </div>
       </div>

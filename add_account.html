@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signup.css" rel="stylesheet">
+	
+	<!-- JQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<!-- Custom JQuery Code -->
+    <script src="js/add_account.js"></script>
+    <script src="js/ajax.js"></script>
+	
+</head>
+<body role="document">
+
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html">Home</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active" id="registerButton"><a href="signup.html">Register</a></li>
+					<li class="active" id="cart"><a href="cart.html">Cart</a></li>
+                    <li class="active" id="admin"><a href="admin.html">Admin</a></li>
+				</ul>
+				
+				<div class="navbar-form navbar-right" id="navbar-signedout">
+					<div class="form-group">
+						<input type="text" placeholder="Email" class="form-control" name="email" id="emailsignin">
+					</div>
+					<div class="form-group">
+						<input type="password" placeholder="Password" class="form-control" name="password" id="passwordsignin">
+					</div>
+					<button type="submit" class="btn btn-success" id="signinbutton">Sign in</button>
+				</div>
+				
+				<div class="navbar-form navbar-right" id="navbar-signedin">
+					
+				</div>
+				
+			</div><!--/.nav-collapse -->
+		</div>
+	</nav>
+  
+	<div class="container theme-showcase" role="main">
+		<div class="container-fluid">
+			<section class="container">
+				<div class="alert-area"></div>
+				
+				<div class="container-page">
+                    <br>
+                    <h3 class="dark-grey">Add account</h3>	
+					<div class="col-md-6" id="auto_fill">
+						<div class="form-group col-lg-12">
+							<label>Email</label>
+							<input type="" name="Email" class="form-control" id="email" value="" placeholder="example@gmail.com">
+						</div>
+						
+						<div class="form-group col-lg-6">
+							<label>Password</label>
+							<input type="password" name="Password" class="form-control" id="passwords" value="" placeholder="Password">
+						</div>
+										
+						<div class="form-group col-lg-6">
+							<label>First Name</label>
+							<input type="" name="First Name" class="form-control" id="first_name" value="" placeholder="First Name">
+						</div>
+						
+						<div class="form-group col-lg-6">
+							<label>Last Name</label>
+							<input type="" name="Last Name" class="form-control" id="last_name" value="" placeholder="Last Name">
+						</div>
+                         <div class="form-group col-lg-12">
+							<label>Phone Number</label>
+							<input type="" name="Phone Number" class="form-control" id="phone" value="" placeholder="xxx-xxx-xxxx">
+						</div>
+                        <div class="form-group col-lg-12">
+                            <label>Address Line 1</label>
+                                <input id="street" name="address-line1" type="" placeholder="address-line1"
+                                class="form-control">
+                                <p class="help-block">Street address, P.O. box, company name, c/o</p>
+                        </div>
+                      
+                                
+                                
+                      
+                        <!-- city input-->
+                        <div class="form-group col-lg-6">
+                            <label >City / Town</label>
+                                <input id="city" name="city" type="" placeholder="city" class="form-control">
+                                
+                            
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label >State / Province / Region</label>
+                                <input id="state" name="state" type="" placeholder="State / Province / Region" class="form-control">
+                             
+                            
+                        </div>
+                       <div class="form-group col-lg-6">
+                            <label >Zip / Postal Code</label>
+                                <input id="zipcode" name="zipcode" type="" placeholder="Zip / Postal Code" class="form-control">
+                        </div>
+                            
+                        
+                        <div class="form-group col-lg-6">
+                            <label >Country</label>
+                                <input id="country" name="country" type="" placeholder="Zip / Postal Code" class="form-control">
+                        </div>
+                                
+                       <div class="col-md-3">
+                          <button type="button" class="btn btn-success" onclick="submit();">Comfirm</button>
+                        </div>
+                        
+					</div>
+                    <div class="col-md-6">
+                   
+                        
+    
+</div>
+                        
+                        
+                    
+                   
+				
+				
+					
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+</body>
+</html>

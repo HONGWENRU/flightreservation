@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link  href="css/admin.css" rel="stylesheet" type="text/css">
+
+    <!-- JQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom JQuery Code -->
+    <script src="js/ajax.js"></script>
+    <script src="js/manage_accounts.js"></script>
+
+
+</head>
+<body role="document">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Home</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active" id="registerButton"><a href="signup.html">Register</a></li>
+                    <li class="active" id="cart"><a href="cart.html">Cart</a></li>
+                    <li class="active" id="admin"><a href="admin.html">Admin</a></li>
+                </ul>
+            </div>
+            <div class="navbar-form navbar-right" id="navbar-signedout">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" class="form-control" name="email" id="emailsignin">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" class="form-control" name="password" id="passwordsignin">
+                </div>
+                <button type="submit" class="btn btn-success" id="signinbutton">Sign in</button>
+            </div>
+
+            <div class="navbar-form navbar-right" id="navbar-signedin"></div>
+
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+
+
+    <br>
+    <div id="wrap"> 
+        <div id="content" class="container col-sm-11 col-sm-offset-3 col-md-12 col-md-offset-2 main container-menu" style="margin-left: 5%; margin-right: 5%; width: 90%">
+            <div class="page-header"> 
+                <h1>List of Customers</h1>
+            </div>
+            <table id="div_replace_customer" class="table table-striped table-bordered table-hover table-responsive">  
+                <thead> 
+                    <tr>  
+                        <th>Customer ID</th> 
+                        <th>Email</th> 
+                        <th>Create Date</th> 
+                        <th>Phone</th> 
+                        <th>Passwords</th> 
+                        <th>First Name</th> 
+                        <th>Last Name</th>  
+                        <th>Nick Name</th> 
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>City</th>
+                        <th>Zip Code</th>
+                        <th>Street</th>
+                        <th>Action</th>         
+                    </tr> 
+                </thead>  
+                <tbody>
+                </tbody>
+            </table>
+            <a href="add_account.html">Add Customer</a>
+        </div><!-- /container --> 
+        <div id="push"></div> 
+    </div><!-- /wrap -->  
+
+
+</body>
+</html>

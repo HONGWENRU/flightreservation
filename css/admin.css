@@ -29,4 +29,8 @@ tbody{
   height: 300px;            //  <-- Select the height of the body
   width: 100%;
   position: absolute;
-} 
+}
+
+input{
+  /*width: 100%;*/
+}
