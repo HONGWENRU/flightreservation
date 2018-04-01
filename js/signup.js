@@ -12,23 +12,24 @@ $("document").ready(function() {
 
 
 
-            ret={
-                'email':document.getElementById("Email").value.toString(),
-                'remail':document.getElementById("Repeat Email").value.toString(),
-                'password':document.getElementById("Password").value.toString(),
-                'repassword':document.getElementById("Repeat Password").value.toString(),
-                'first name':document.getElementById("First Name").value.toString(),
-                'last name':document.getElementById("Last Name").value.toString(),
-                'Phone number':document.getElementById("Phone Number").value.toString(),
-                'address':$("#address-line1").val()+$("#address-line2").val(),
-                'city':$("#city").val(),
-                'state':$("#state").val(),
-                'country':$("#country").val(),
+        var ret={
+            'email':document.getElementById("Email").value.toString(),
+            'remail':document.getElementById("Repeat Email").value.toString(),
+            'password':document.getElementById("Password").value.toString(),
+            'repassword':document.getElementById("Repeat Password").value.toString(),
+            'first name':document.getElementById("First Name").value.toString(),
+            'last name':document.getElementById("Last Name").value.toString(),
+            'Phone number':document.getElementById("Phone Number").value.toString(),
+            'address':$("#address-line1").val()+$("#address-line2").val(),
+            'city':$("#city").val(),
+            'state':$("#state").val(),
+            'country':$("#country").val(),
+            'zipcode':$('#zip').val()
 
-            };
+
+        };
 
 
-            console.log(ret);
 
 
 
@@ -49,19 +50,57 @@ $("document").ready(function() {
          }
 
 
-            var ajax=Ajax();
-            var url="http://172.31.131.185/539/register.php";
-            var pcon='email='+ret['email']+'&password='+ret['password']+'&first_name='+ret['first name']+'&last_name='+ret['last name']+'&phone_number='+ret['Phone number']+'&address='+ret['address']+'&city='+ret['city']+'&state='+ret['state']+'&country='+ret['country'];
-            console.log(url+pcon);
-            ajax.post(url,pcon,function(data){
+            // var ajax=Ajax();
+            // var url="http://172.31.131.185/539/register.php";
+            // var pcon='email='+ret['email']+'&password='+ret['password']+'&first_name='+ret['first name']+'&last_name='+ret['last name']+'&phone_number='+ret['Phone number']+'&address='+ret['address']+'&city='+ret['city']+'&state='+ret['state']+'&country='+ret['country'];
+            // console.log(url+pcon);
+            // ajax.post(url,pcon,function(data){
+            //
+            //     alert(data);
+            //
+            // });
+            //
+            // alert('checkcheck');
 
-                alert(data);
 
+
+
+
+            var re= $.ajax({
+                url: "http://172.31.147.12/539/signup.php",
+                dataType: "text",
+                type: "POST",
+                data:ret
             });
 
-            alert('checkcheck');
+         if(re==0){
+             alert('registration failed!!!');
+         }else{
+             localStorage["loggedin"] = 'yes';
+             localStorage["adminloggedin"] = 'yes';
+             localStorage["email"] = ret['email'];
+             $("#navbar-signedout").hide();
+             window.location.href='index.html';
+         }
+
+
 
         });
     }
 );
 
+// function createUser($email,$password,$firstname,$lastname){
+//
+//     //Ajax call to create User
+//     return $.ajax({
+//         url: "php/signup.php",
+//         dataType: "text",
+//         type: "POST",
+//         data: {
+//             email : $('#Email').val(),
+//             password : $('#Password').val(),
+//             firstname : $("[id='First Name']").val(),
+//             lastname : $("[id='Last Name']").val(),
+//         }
+//     });
+// }

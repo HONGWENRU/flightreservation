@@ -106,25 +106,110 @@ $('document').ready(function()
 
 $('document').ready(function(){
 
+
+    var ret={};
+    var data=[];
+
+
+
+
     $('#check-out').click(function(){
+
+        //console.log(localStorage['totalprice']);
+
+        var totalprice=parseInt(localStorage['totalprice'])*id;
+
+        ret['email']=localStorage['email'];
+
+        ret['start_date']=localStorage['start_date'];
+
+        ret['numberofpassager']=id;
+
+        ret['flightnumber']=localStorage.getItem('flightnumber');
+
+        ret['total_cost']=totalprice+'';
+
+        var flightfromlist=[];
+        var flightretlist=[];
+
+        for(var ii =0; ii<parseInt(localStorage.getItem('flightfromnumber')); ii ++){
+            // ret['flight'+ii]=localStorage.getItem('flight'+ii);
+            flightfromlist.push(localStorage.getItem('flightfrom'+ii))
+        }
+
+        for(var ii =0; ii<parseInt(localStorage.getItem('flightreturnnumber')); ii ++){
+            // ret['flight'+ii]=localStorage.getItem('flight'+ii);
+            flightretlist.push(localStorage.getItem('flightret'+ii))
+        }
+
+        ret['flightfromlist']=flightlist;
 
         for(var i =0 ; i<id; i++){
             var fir=$('#fir-na-'+i).val();
             var last=$('#las-na-'+i).val();
             var dob=$('#dob-'+i).val();
             var melname="input[name='meal-"+i+"']:checked";
-            var mel=$(melname)
+            var mel=$(melname);
+            var melname_data=[];
+            mel.each(function(){
+                melname_data.push(this.value);
+            });
+
             var mel_sty_name = "input[name='meal-style-"+i+"']:checked";
-            var mel_sty=$(mel_sty_name)
+            var mel_sty=$(mel_sty_name);
+
+            var mel_sty_data=[];
+
+            mel_sty.each(function(){
+                mel_sty_data.push(this.value);
+            });
+
             var food=$('#food-'+i+'').val();
             var seat=$('#seat-type-'+i+'').val();
 
-           console.log(food);
-           console.log(seat)
+
+           var tmp={};
+
+            tmp['first']=fir;
+            tmp['last']=last;
+            tmp['dob']=dob;
+            tmp['melname_data']=melname_data;
+            tmp['mel_sty_data']=mel_sty_data;
+            tmp['food']=food;
+            tmp['seat']=seat;
+
+
+          data.push(tmp);
 
 
 
         }
+
+        ret['data']=data;
+
+       console.log(ret);
+
+
+       var txt='Your total cost is '+totalprice;
+
+       var con=confirm(txt);
+
+       if(con==true) {
+
+
+           var ret_data = $.ajax({
+               url: 'http://ec2-52-11-70-247.us-west-2.compute.amazonaws.com/api/customer/reservation.php',
+               dataType: "json",
+               type: "POST",
+               data: ret
+
+           });
+
+           console.log(ret_data);
+
+
+       }else return ;
+
 
     });
 
