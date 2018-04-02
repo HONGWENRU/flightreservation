@@ -125,7 +125,6 @@ $('document').ready(function(){
 
         ret['numberofpassager']=id;
 
-        ret['flightnumber']=localStorage.getItem('flightnumber');
 
         ret['total_cost']=totalprice+'';
 
@@ -142,7 +141,8 @@ $('document').ready(function(){
             flightretlist.push(localStorage.getItem('flightret'+ii))
         }
 
-        ret['flightfromlist']=flightlist;
+        ret['flightfromlist']=flightfromlist;
+        ret['flightretlist']=flightretlist;
 
         for(var i =0 ; i<id; i++){
             var fir=$('#fir-na-'+i).val();
@@ -197,15 +197,22 @@ $('document').ready(function(){
        if(con==true) {
 
 
-           var ret_data = $.ajax({
+          $.ajax({
                url: 'http://ec2-52-11-70-247.us-west-2.compute.amazonaws.com/api/customer/reservation.php',
                dataType: "json",
                type: "POST",
-               data: ret
-
+               data: ret,
+               success:function(data){
+                   console.log(data);
+                   if(data=='1'){
+                       alert('Successful!!!!');
+                   }
+                   else{
+                       alert('Something wrong');
+                   }
+               }
            });
 
-           console.log(ret_data);
 
 
        }else return ;

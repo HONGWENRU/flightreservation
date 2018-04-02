@@ -12,7 +12,7 @@ $('document').ready(function(){
         var ret={
             'email':document.getElementById("Email").value.toString(),
             'remail':document.getElementById("Repeat Email").value.toString(),
-            'password':document.getElementById("Password").value.toString(),
+            'passwords':document.getElementById("Password").value.toString(),
             'repassword':document.getElementById("Repeat Password").value.toString(),
             'first name':document.getElementById("First Name").value.toString(),
             'last name':document.getElementById("Last Name").value.toString(),
@@ -30,7 +30,7 @@ $('document').ready(function(){
 
 
 
-        if(ret['password']!=ret['repassword']){
+        if(ret['passwords']!=ret['repassword']){
             alert('pass word and repeart password are not match');
             return;
         }
@@ -47,13 +47,45 @@ $('document').ready(function(){
 
         console.log(ret);
 
+        ret['old_email']=localStorage.getItem('email');
 
         var re= $.ajax({
-            url: "http://172.31.147.12/539/update.php",
-            dataType: "text",
+            url: "http://ec2-52-11-70-247.us-west-2.compute.amazonaws.com/api/manager/edit_customer.php",
+            dataType: "json",
             type: "POST",
-            data:ret
+            data:ret,
+            success: function(data){
+                console.log(data);
+                alert('edit customer information in succ.')
+            },
+            error: function(request, status, error){
+                if (request.responseText == 'suceess'){
+                    alert('edit customer information successfully')
+                }
+                else{
+                    alert('fail to edit customer');
+                    console.log(request.responseText);
+                    console.log(error);
+                    console.log(status);
+                }
+
+            }
+
+            // success: function(data){
+            //
+            //     if(data=='suceess'){
+            //         alert('Successful');
+            //     }else{
+            //
+            //
+            //         alert('Something wrong');
+            //     }
+            //
+            //
+            // }
+
         });
+
 
 
     });

@@ -157,7 +157,7 @@ $("document").ready(function(){
         if(data==null) return;
 
         data.forEach(function(element){
-            var content='Depart time:'+element['depart_time']+'  '+'Landing time:' +element['arrive_time']+"  "+'Company:' +element['airline_name'] +'<br>'+'Max seats:'+element['max_seats']+'  '+'From:'+element['from_ap']+'  '+'To:'+element['to_ap']+'<br>'+'  '+'Price:'+element['price']+'  '+'Stop numbers:'+element['stopnum'];
+            var content='Depart time:'+element['depart_time']+'  '+'Landing time:' +element['arrive_time']+"  "+'Company:' +element['airline_name'] +'<br>'+'Max seats:'+element['max_seats']+'  '+'From:'+element['from_ap']+'  '+'To:'+element['to_ap']+'<br>'+'  '+'Price:'+element['price']+'  '+'Stop numbers:'+element['stopnum']+' Flight number:'+element['fid'];
             var insert="<label class='btn btn-primary center-block col-md-12 form-check-label'> <input name='from' type='checkbox' class='form-check-input' autocomplete='off' value=" +element['fid']+ "#"+element['price']+"> "+content+"</label>";
 
             $("#flightlist").append(insert);
@@ -173,7 +173,7 @@ $("document").ready(function(){
         if(data==null) return;
 
         data.forEach(function(element){
-            var content='Depart time:'+element['depart_time']+'  '+'Landing time:' +element['arrive_time']+"  "+'Company:' +element['airline_name'] +'<br>'+'Max seats:'+element['max_seats']+'  '+'From:'+element['from_ap']+'  '+'To:'+element['to_ap']+'<br>'+'  '+'Price:'+element['price']+'  '+'Stop numbers:'+element['stopnum'];
+            var content='Depart time:'+element['depart_time']+'  '+'Landing time:' +element['arrive_time']+"  "+'Company:' +element['airline_name'] +'<br>'+'Max seats:'+element['max_seats']+'  '+'From:'+element['from_ap']+'  '+'To:'+element['to_ap']+'<br>'+'  '+'Price:'+element['price']+'  '+'Stop numbers:'+element['stopnum']+'  Flight number:'+element['fid'];
             var insert="<label class='btn btn-primary center-block col-md-12 form-check-label'> <input name='return' type='checkbox' class='form-check-input' autocomplete='off' value=" +element['fid']+ "#"+element['price']+"> "+content+"</label>";
 
             $("#flightlist").append(insert);
@@ -218,16 +218,14 @@ $("document").ready(function(){
             alert('Your already logged in!');
         }else {
             //Get Email and Password
-           // var email = $("#emailsignin").val();
-           // var password = $("#passwordsignin").val();
+           var email = $("#emailsignin").val();
+           var password = $("#passwordsignin").val();
             // localStorage['loggedin']='yes';
             // localStorage['email']='tmp email';
             //Login
             // console.log(email);
             // console.log(password);
 
-            var email="test2@test.com";
-            var password='passwords';
 
             login(email,password).done(function(r){
                 console.log(r);
@@ -240,12 +238,12 @@ $("document").ready(function(){
                     $("#navbar-signedout").hide();
                     window.location.href='index.html';
                 }
-                // else if(r == 0) {
-                //     localStorage["loggedin"] = 'yes';
-                //     localStorage["email"] = email;
-                //     $("#navbar-signedout").hide();
-                //     window.location.href='index.html';
-                // }
+                else if(r == 2) {
+                    localStorage["loggedin"] = 'yes';
+                    localStorage["email"] = email;
+                    $("#navbar-signedout").hide();
+                    window.location.href='index.html';
+                }
                 else {
                     //Fail, print failure
                     alert('Username or password is incorrect');
@@ -278,16 +276,17 @@ function login(email,password){
 
 
 function displaySignedIn(){
-    email = localStorage["email"];
-    dropDownMeta = "<button class=\"btn btn-success dropdown-toggle\" type=\"\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-expanded=\"false\">"+localStorage.getItem('email')+"</button>";
-    dropDownTitle = email;
-    dropDownEndMeta = "<span class=\"caret\"></span></button>";
-    dropDownMenu = "<ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dropdownMenu1\">";
-    dropDownItem1 = "<li role=\"presentation\"><a id=\"changepassword\" role=\"menuitem\" tabindex=\"-1\" href=\"changepassword.html\">Update</a></li>";
-    dropDownItem2 = "<li role=\"presentation\"><a id=\"history\" role=\"menuitem\" tabindex=\"-1\" href=\"history.html\">History</a></li>";
-    dropDownItem3 = "<li role=\"presentation\"><a id=\"signoutbtn\" role=\"menuitem\" tabindex=\"-1\" href=\"#\">Sign Out</a></li>";
+    var email = localStorage["email"];
+    var dropDownMeta = "<button class=\"btn btn-success dropdown-toggle\" type=\"\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-expanded=\"false\">"+localStorage.getItem('email')+"</button>";
+    var dropDownTitle = email;
+    var dropDownEndMeta = "<span class=\"caret\"></span></button>";
+    var dropDownMenu = "<ul class=\"dropdown-menu\" role=\"menu\" aria-labelledby=\"dropdownMenu1\">";
+    var dropDownItem1 = "<li role=\"presentation\"><a id=\"changepassword\" role=\"menuitem\" tabindex=\"-1\" href=\"changepassword.html\">Update</a></li>";
+    var dropDownItem2 = "<li role=\"presentation\"><a id=\"history\" role=\"menuitem\" tabindex=\"-1\" href=\"history.html\">History</a></li>";
+    var dropDownItem3 = "<li role=\"presentation\"><a id=\"signoutbtn\" role=\"menuitem\" tabindex=\"-1\" href=\"#\">Sign Out</a></li>";
+    var dropDownItem4 = "<li role=\"presentation\"><a id=\"adminButton\" role=\"menuitem\" tabindex=\"-1\" href=\"admin.html\">Admin</a></li>";
 
-    dropDownEndMenu = "</ul>";
-    signedInDropDown = "<div class=\"dropdown\">"+dropDownMeta+dropDownTitle+dropDownEndMeta+dropDownMenu+dropDownItem1+dropDownItem2+dropDownItem3+dropDownEndMenu+"</div>";
+    var dropDownEndMenu = "</ul>";
+    var signedInDropDown = "<div class=\"dropdown\">"+dropDownMeta+dropDownTitle+dropDownEndMeta+dropDownMenu+dropDownItem1+dropDownItem2+dropDownItem4+dropDownItem3+dropDownEndMenu+"</div>";
     $("#navbar-signedin").append(signedInDropDown);
 }
